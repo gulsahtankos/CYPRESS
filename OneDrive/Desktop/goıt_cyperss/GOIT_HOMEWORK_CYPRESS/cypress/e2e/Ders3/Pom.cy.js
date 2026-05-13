@@ -34,7 +34,7 @@ describe ("Page Object Model - POM", () =>{ ;
     Login2.checkLoginButton();
     Login2.forgetPassword("I can't remember the password");
 
-});
+}); 
 
 
 

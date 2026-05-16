@@ -1,0 +1,46 @@
+config:
+  target: "http://httpbin.org/"
+  phases:
+    - duration: 1
+      arrivalRate: 2
+      name: "Goit Performance Test"
+
+  payload:
+  - path: "abc.csv"
+    fields:
+      - "keyword1"
+      - "keyword2"  
+
+  plugins:
+    ensure: {}
+
+  ensure:
+    thresholds:
+      - http.response_time.max: 1600
+      - http.response_time.p99: 1000
+    conditions:
+      - expression: http.responses == 4
+      - expression: vusers.failed == 0
+      - expression: http.response_time.max <1500 and http.response_time.p95 <1000
+
+scenarios:
+  - name: Create Account
+    flow:
+      - post:
+          url: "/post"
+          json:
+            username: "Goit"
+            password: "12345"
+          headers:
+            Content-Type: "application/json"
+            capture:
+      - json: "$.json"
+        as: "response_body"
+
+      - json: "$.headers.Host"
+        as: "host"
+
+  - log: "Response Body : {{response_body}}"
+  - log: "Host : {{host}}"
+  - log: "ilk değer: {{ keyword1 }}"
+  - log: "ikinci değer: {{ keyword2 }}"

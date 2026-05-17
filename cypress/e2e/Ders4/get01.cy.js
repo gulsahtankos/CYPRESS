@@ -84,18 +84,16 @@ describe("API testing", ()=>{
 //Post isteği body gönderme:::::::2
      it("TC05_POST isteği body", ()=>{
 
-        const body ={
+    const body ={
             name:"M.",
             role:"QA",
             age:30
         },
-        const rq ={
+    const rq ={
         method: 'POST',
         url:"https://httpbin.org/post",
         body:body,
-
         failOnStatusCode:false
-
         }
        
     }

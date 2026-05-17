@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+
+build-job:
+  stage: build
+  script:
+    - echo "Hello, GITLAB USER LOGIN"
+
+test:
+  image: cypress/browsers
+  stage: test
+  script:
+    - npm ci
+    - npx cypress run
+
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
+
+    expire_in: 1 day

@@ -1,6 +1,6 @@
 import Login from "../../Pages/Login";
 
-describe ("Page Object Model - POM", () =>{ ;
+describe ("Page Object Model - POM", () => { ;
 
     it("tc02 Page Object Pattern", () => {
         

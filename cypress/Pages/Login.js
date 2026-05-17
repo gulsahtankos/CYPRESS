@@ -31,10 +31,10 @@
        .and("exist");
 }
       //Bu Method forgetpassword alanının kontrolünü sağlar.
-      forgetPassword(){
+      forgetPassword(text){
       cy.get('.next-1f1fv1i > .next-1qrvie4')
       .should("be.visible")
-      .and("have.text", "I can't remember the password");
+      .and("have.text", text);
 }
     }
 
